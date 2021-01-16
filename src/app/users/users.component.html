@@ -1,0 +1,145 @@
+<div class="container">
+  <div class="table-wrapper">
+    <div class="table-title">
+      <div class="row">
+        <div class="col-sm-6">
+          <h2>Manage <b>Users</b></h2>
+        </div>
+        <div class="col-sm-6">
+          <a href="#addUsersModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Users</span></a>
+        </div>
+      </div>
+    </div>
+    <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-striped table-hover">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Address</th>
+        <th>Phone</th>
+        <th>Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let user of users">
+
+        <td>{{user.name |uppercase}}</td>
+        <td>{{user.email |uppercase}}</td>
+        <td>{{user.address['street'] |uppercase}}</td>
+        <td>{{user.phone}}</td>
+        <td>
+          <a href="#editUsersModal" (click)="editer(user.id)" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+          <a href="#"  (click)="delete(user.id)" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<!-- Edit Modal HTML -->
+<div id="addUsersModal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content col-sm-12">
+      <form class="col-sm-12" #AddForm="ngForm" (ngSubmit)="Ajouter(AddForm)">
+
+        <div class="alert alert-dismissible {{css}}" *ngIf="message !=''">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+          <span>{{message}}</span>
+        </div>
+
+        <div class="modal-header col-sm-12">
+          <h4 class="modal-title">Add Users</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        </div>
+        <div class="modal-body col-sm-12">
+          <div class="form-row">
+            <div class="col-sm-6">
+              <label >Name</label>
+              <input type="text" name="name" ngModel class="form-control" required>
+            </div>
+            <div class="col-sm-6">
+              <label >Email</label>
+              <input type="email" name="email" ngModel class="form-control" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Address</label>
+            <input class="form-control" name="adresse" ngModel required>
+          </div>
+          <div class="form-group">
+            <label>Phone</label>
+            <input type="number" ngModel name="phone" class="form-control" required>
+          </div>
+          <div class="form-row">
+            <div class="col-sm-6">
+              <label>Website</label>
+              <input type="text" ngModel name="website" class="form-control" required>
+            </div>
+            <div class="col-sm-6">
+              <label>Company</label>
+              <input type="text" ngModel name="company" class="form-control" required>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <input type="button" class="btn btn-danger" data-dismiss="modal" value="Cancel">
+          <input type="submit" class="btn btn-success" value="Add">
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- Edit Modal HTML -->
+<div id="editUsersModal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content col-sm-12">
+      <form class="col-sm-12" #ValiderEditeForm="ngForm" (ngSubmit)="validEdite(ValiderEditeForm)">
+        <div class="modal-header col-sm-12">
+          <h4 class="modal-title">Add Users</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        </div>
+        <div class="modal-body col-sm-12">
+
+          <div class="alert alert-dismissible {{css}}" *ngIf="message !=''">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <span>{{message}}</span>
+          </div>
+
+          <div class="form-row">
+            <div class="col-sm-6">
+              <label >Name</label>
+              <input type="text" name="name" [(ngModel)]="name" class="form-control" required>
+            </div>
+            <div class="col-sm-6">
+              <label >Email</label>
+              <input type="email" name="email" [(ngModel)]="email" class="form-control" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Address</label>
+            <input class="form-control" name="adresse" [(ngModel)]="adresse" required>
+          </div>
+          <div class="form-group">
+            <label>Phone</label>
+            <input type="text" [(ngModel)]="phone" name="phone" class="form-control" required>
+          </div>
+          <div class="form-row">
+            <div class="col-sm-6">
+              <label>Website</label>
+              <input type="text" [(ngModel)]="website" name="website" class="form-control" required>
+            </div>
+            <div class="col-sm-6">
+              <label>Company</label>
+              <input type="text" [(ngModel)]="company" name="company" class="form-control" required>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <input type="button" class="btn btn-danger" data-dismiss="modal" value="Cancel">
+          <input type="submit" class="btn btn-success" value="Add">
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+

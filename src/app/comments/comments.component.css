@@ -1,11 +1,9 @@
-.table-responsive {
-  margin: 30px 0;
-}
+
 .table-wrapper {
   background: #fff;
   padding: 20px 25px;
+  margin: 30px 0;
   border-radius: 3px;
-  min-width: 1000px;
   box-shadow: 0 1px 1px rgba(0,0,0,.05);
 }
 .table-title {
@@ -13,7 +11,6 @@
   background: #435d7d;
   color: #fff;
   padding: 16px 30px;
-  min-width: 100%;
   margin: -20px -25px 10px;
   border-radius: 3px 3px 0 0;
 }
@@ -184,18 +181,12 @@ table.table .avatar {
   background: #ddd;
 }
 /* Modal styles */
-.modal .modal-dialog {
-  max-width: 400px;
-}
-.modal .modal-header, .modal .modal-body, .modal .modal-footer {
-  padding: 20px 30px;
-}
+
+
 .modal .modal-content {
   border-radius: 3px;
-  font-size: 14px;
 }
 .modal .modal-footer {
-  background: #ecf0f1;
   border-radius: 0 0 3px 3px;
 }
 .modal .modal-title {
