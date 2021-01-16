@@ -5,9 +5,11 @@ import {PostsComponent} from './posts/posts.component';
 import {CommentsComponent} from './comments/comments.component';
 
 const routes: Routes = [
+  {path: '',redirectTo:'/user', pathMatch:'full'},
   {path: 'user', component: UsersComponent},
   {path: 'post', component: PostsComponent},
   {path: 'comment', component: CommentsComponent},
+  { path: '**', redirectTo: '/user', pathMatch: 'full' }
 ];
 
 @NgModule({
